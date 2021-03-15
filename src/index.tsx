@@ -1,15 +1,9 @@
 import React from "react";
 import { registerRootComponent } from "expo";
-import { StatusBar } from "expo-status-bar";
-import Login from "./Login";
+import Login from "./pages/Login";
 
 const App: React.FC = () => {
-  return (
-    <>
-      <StatusBar style="auto" />
-      <Login />
-    </>
-  );
+  return <Login />;
 };
 
 export default registerRootComponent(App);
