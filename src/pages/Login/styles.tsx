@@ -3,11 +3,11 @@ import { Dimensions } from "react-native";
 import Constants from "expo-constants";
 
 export const Container = styled.View`
-  height: ${Dimensions.get("window").height}px;
+  flex: 1;
   background-color: #fff;
   align-items: center;
   justify-content: center;
-  margin-top: ${Constants.statusBarHeight + 20}px;
+  padding-top: ${Constants.statusBarHeight + 20}px;
 `;
 
 export const Header = styled.View``;
@@ -65,7 +65,7 @@ export const ButtonLabel = styled.Text`
 
 export const Footer = styled.Text`
   font-size: 18px;
-  /* margin-bottom: 10px; */
+  margin-bottom: 10px;
   color: #909090;
   font-weight: 700;
   text-align: center;

@@ -1,9 +1,19 @@
 import React from "react";
 import { registerRootComponent } from "expo";
-import Login from "./pages/Login";
+import { NavigationContainer } from "@react-navigation/native";
+
+import AuthProvider from "./contexts/auth";
+
+import Application from "./Application";
 
 const App: React.FC = () => {
-  return <Login />;
+  return (
+    <NavigationContainer>
+      <AuthProvider>
+        <Application />
+      </AuthProvider>
+    </NavigationContainer>
+  );
 };
 
 export default registerRootComponent(App);

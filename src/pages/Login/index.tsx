@@ -5,6 +5,8 @@ import { StatusBar } from "expo-status-bar";
 
 import LogoImg from "~/assets/sensor.png";
 
+import { useAuth } from "../../contexts/auth";
+
 import Form from "../../components/Form";
 import Input from "../../components/Input";
 
@@ -19,7 +21,7 @@ import {
   Button,
   NativeFeedback,
   ButtonLabel,
-  Footer
+  Footer,
 } from "./styles";
 
 interface FormData {
@@ -29,6 +31,7 @@ interface FormData {
 
 const Login: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
+  const { signIn } = useAuth();
 
   const handleSubmit: SubmitHandler<FormData> = (data) => {
     console.log(formRef);
@@ -51,7 +54,7 @@ const Login: React.FC = () => {
               <Input name="password" placeholder="Senha" />
               <NativeFeedback
                 background={TouchableNativeFeedback.Ripple("#fff", false)}
-                onPress={() => alert("aewd")}
+                onPress={() => signIn()}
               >
                 <Button>
                   <ButtonLabel>Entrar</ButtonLabel>
