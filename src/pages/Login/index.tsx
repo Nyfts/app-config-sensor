@@ -1,13 +1,26 @@
 import React, { useRef } from "react";
+import { Alert, TouchableNativeFeedback } from "react-native";
 import { SubmitHandler, FormHandles } from "@unform/core";
 import { StatusBar } from "expo-status-bar";
 
-import LogoImg from "~/assets/sensor1.png";
+import LogoImg from "~/assets/sensor.png";
 
 import Form from "../../components/Form";
 import Input from "../../components/Input";
 
-import { Container, Header, Body, Text, LogoContainer, Logo } from "./styles";
+import {
+  Container,
+  Header,
+  Body,
+  Text,
+  LogoContainer,
+  Logo,
+  FormContainer,
+  Button,
+  NativeFeedback,
+  ButtonLabel,
+  Footer
+} from "./styles";
 
 interface FormData {
   name: string;
@@ -31,11 +44,23 @@ const Login: React.FC = () => {
           </LogoContainer>
         </Header>
         <Body>
-          <Form formRef={formRef} onSubmit={handleSubmit} >
-            <Input name="username" placeholder="Usuário" />
-            <Input name="password" placeholder="Senha" />
-          </Form>
+          <Text>Entre com suas credenciais</Text>
+          <FormContainer>
+            <Form formRef={formRef} onSubmit={handleSubmit}>
+              <Input name="username" placeholder="Usuário" />
+              <Input name="password" placeholder="Senha" />
+              <NativeFeedback
+                background={TouchableNativeFeedback.Ripple("#fff", false)}
+                onPress={() => alert("aewd")}
+              >
+                <Button>
+                  <ButtonLabel>Entrar</ButtonLabel>
+                </Button>
+              </NativeFeedback>
+            </Form>
+          </FormContainer>
         </Body>
+        <Footer>Qoobo</Footer>
       </Container>
     </>
   );

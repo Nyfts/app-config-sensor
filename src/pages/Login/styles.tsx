@@ -1,28 +1,21 @@
 import styled from "styled-components/native";
-import Constants from 'expo-constants'
+import { Dimensions } from "react-native";
+import Constants from "expo-constants";
 
 export const Container = styled.View`
-  flex: 1;
+  height: ${Dimensions.get("window").height}px;
   background-color: #fff;
   align-items: center;
   justify-content: center;
+  margin-top: ${Constants.statusBarHeight + 20}px;
 `;
 
-export const Header = styled.View`
-  background-color: #149eda;
-  flex: 1;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  padding-top: ${Constants.statusBarHeight}px;
-  justify-content: center;
-`;
+export const Header = styled.View``;
 
 export const LogoContainer = styled.View`
   background-color: #fff;
-  width: 200px;
-  height: 200px;
-  border-radius: 100px;
+  width: 250px;
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,13 +23,50 @@ export const LogoContainer = styled.View`
 
 export const Logo = styled.Image`
   height: 75%;
-  width: 30.5%;
+  width: 65.41%;
 `;
 
 export const Body = styled.View`
-  flex: 2;
+  flex: 1;
+  margin-top: 20px;
   background-color: #fff;
   width: 100%;
+  padding: 0 20px;
 `;
 
-export const Text = styled.Text``;
+export const Text = styled.Text`
+  font-size: 22px;
+  margin-bottom: 20px;
+  color: #707070;
+  font-weight: 700;
+  text-align: center;
+`;
+
+export const FormContainer = styled.View`
+  margin-top: 0;
+`;
+
+export const NativeFeedback = styled.TouchableNativeFeedback``;
+
+export const Button = styled.View`
+  padding: 15px;
+  border-radius: 5px;
+  background-color: #149eda;
+  justify-content: center;
+  elevation: 5;
+  margin: 10px;
+`;
+
+export const ButtonLabel = styled.Text`
+  font-size: 20px;
+  text-align: center;
+  color: #fff;
+`;
+
+export const Footer = styled.Text`
+  font-size: 18px;
+  /* margin-bottom: 10px; */
+  color: #909090;
+  font-weight: 700;
+  text-align: center;
+`;
