@@ -1,13 +1,17 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
-import { Alert } from "react-native";
 
 interface UserInterface {
   name?: string;
 }
 
+interface CredentialProps {
+  username: string;
+  password: string;
+}
+
 interface AuthContextInterface {
   signed: boolean;
-  signIn: Function;
+  signIn: (credentials: CredentialProps) => Promise<void>;
   signOut: Function;
   user?: UserInterface;
 }
@@ -24,9 +28,14 @@ const AuthProvider: React.FC = ({ children }) => {
     getStorageItens();
   }, []);
 
-  function signIn(): void {    
-    setUser({
-      name: "Luan Jesus",
+  async function signIn(): Promise<void> {
+    return new Promise((resolve, reject): void => {
+      setTimeout(() => {
+        // setUser({
+        //   name: "Luan Jesus",
+        // });
+        reject(null);
+      }, 2000);
     });
   }
 

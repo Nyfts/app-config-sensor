@@ -1,11 +1,12 @@
 import React, { useRef } from "react";
 import { Alert, TouchableNativeFeedback } from "react-native";
-import {  useNavigation } from '@react-navigation/native';
+import { useNavigation } from "@react-navigation/native";
 import { SubmitHandler, FormHandles } from "@unform/core";
 
 import LogoImg from "~/assets/sensor.png";
 
 import { useAuth } from "../../contexts/auth";
+import { useLoading } from "../../contexts/loading";
 
 import Form from "../../components/Form";
 import Input from "../../components/Input";
@@ -33,9 +34,17 @@ const Login: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const navigation = useNavigation();
   const { signIn } = useAuth();
+  const loading = useLoading();
 
-  const handleSubmit: SubmitHandler<FormData> = (data) => {
-    console.log(formRef);
+  const handleSubmit: SubmitHandler<FormData> = async (data) => {
+    try {
+      loading.show();
+
+      await signIn({ username: "", password: "" });
+    } catch (error) {
+      loading.hide();
+      Alert.alert("Erro", "Houve um erro ao completar sua requisição");
+    }
   };
 
   return (
@@ -54,7 +63,7 @@ const Login: React.FC = () => {
               <Input name="password" placeholder="Senha" />
               <NativeFeedback
                 background={TouchableNativeFeedback.Ripple("#fff", false)}
-                onPress={() => navigation.navigate("Loading", { promise: 'signIn'})}
+                onPress={() => formRef.current.submitForm()}
               >
                 <Button>
                   <ButtonLabel>Entrar</ButtonLabel>
