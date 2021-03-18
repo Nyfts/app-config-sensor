@@ -11,4 +11,6 @@ export const Text = styled.Text`
   background-color: #fff;
 `;
 
-export const ModalContainer = styled.View``;
+export const ModalContainer = styled.View`
+
+`;
