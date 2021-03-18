@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { Alert, TouchableNativeFeedback } from "react-native";
+import {  useNavigation } from '@react-navigation/native';
 import { SubmitHandler, FormHandles } from "@unform/core";
-import { StatusBar } from "expo-status-bar";
 
 import LogoImg from "~/assets/sensor.png";
 
@@ -31,6 +31,7 @@ interface FormData {
 
 const Login: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
+  const navigation = useNavigation();
   const { signIn } = useAuth();
 
   const handleSubmit: SubmitHandler<FormData> = (data) => {
@@ -39,7 +40,6 @@ const Login: React.FC = () => {
 
   return (
     <>
-      <StatusBar style="light" />
       <Container>
         <Header>
           <LogoContainer>
@@ -54,7 +54,7 @@ const Login: React.FC = () => {
               <Input name="password" placeholder="Senha" />
               <NativeFeedback
                 background={TouchableNativeFeedback.Ripple("#fff", false)}
-                onPress={() => signIn()}
+                onPress={() => navigation.navigate("Loading", { promise: 'signIn'})}
               >
                 <Button>
                   <ButtonLabel>Entrar</ButtonLabel>
