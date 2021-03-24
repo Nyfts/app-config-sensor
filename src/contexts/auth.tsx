@@ -31,10 +31,10 @@ const AuthProvider: React.FC = ({ children }) => {
   async function signIn(): Promise<void> {
     return new Promise((resolve, reject): void => {
       setTimeout(() => {
-        // setUser({
-        //   name: "Luan Jesus",
-        // });
-        reject(null);
+        setUser({
+          name: "Luan Jesus",
+        });
+        resolve(null);
       }, 2000);
     });
   }
@@ -48,7 +48,7 @@ const AuthProvider: React.FC = ({ children }) => {
       {children}
     </AuthContext.Provider>
   );
-}
+};
 
 export function useAuth() {
   const context = useContext(AuthContext);
