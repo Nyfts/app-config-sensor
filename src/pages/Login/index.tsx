@@ -1,6 +1,5 @@
 import React, { useRef } from "react";
 import { Alert, TouchableNativeFeedback } from "react-native";
-import { useNavigation } from "@react-navigation/native";
 import { SubmitHandler, FormHandles } from "@unform/core";
 
 import LogoImg from "~/assets/sensor.png";
@@ -32,7 +31,6 @@ interface FormData {
 
 const Login: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
-  const navigation = useNavigation();
   const { signIn } = useAuth();
   const loading = useLoading();
 
