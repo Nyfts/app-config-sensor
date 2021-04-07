@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-import { Dimensions } from "react-native";
 import Constants from "expo-constants";
 
 export const Container = styled.View`
