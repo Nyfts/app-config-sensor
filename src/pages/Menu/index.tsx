@@ -7,7 +7,7 @@ import { useAuth } from "../../contexts/auth";
 import { Container, ScrollView, Item, IconWrapper, Label } from "./styles";
 import { Alert } from "react-native";
 
-const Start: React.FC = () => {
+const Menu: React.FC = () => {
   const navigation = useNavigation();
   const { signOut } = useAuth();
 
@@ -49,4 +49,4 @@ const Start: React.FC = () => {
   );
 };
 
-export default Start;
+export default Menu;

@@ -39,7 +39,15 @@ const QrScan: React.FC = () => {
     setScanned(true);
     Alert.alert(
       "QR Code Scanned",
-      `Bar code with type ${type} and data ${data} has been scanned!`
+      `Bar code with type ${type} and data ${data} has been scanned! Continue?`,
+      [
+        {
+          text: "No",
+          onPress: () => setScanned(false),
+          style: "cancel",
+        },
+        { text: "Yes", onPress: () => navigation.navigate("Form") },
+      ]
     );
   };
 
@@ -82,7 +90,7 @@ const QrScan: React.FC = () => {
               color={flash ? "#000" : "#fff"}
             />
           </Button>
-          <Button onPress={() => navigation.navigate("Start")}>
+          <Button onPress={() => navigation.navigate("Menu")}>
             <Ionicons name="close" size={42} color="#fff" />
           </Button>
         </Footer>

@@ -2,7 +2,8 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import QrScan from "../pages/QrScan";
-import Start from "../pages/Start";
+import Menu from "../pages/Menu";
+import Form from "../pages/Form";
 
 const AppStack = createStackNavigator();
 
@@ -15,9 +16,14 @@ const AppRoutes: React.FC = () => {
         options={{ headerShown: false }}
       />
       <AppStack.Screen
-        name="Start"
-        component={Start}
+        name="Menu"
+        component={Menu}
         options={{ title: "Inicio", headerLeft: null }}
+      />
+      <AppStack.Screen
+        name="Form"
+        component={Form}
+        options={{ headerShown: false }}
       />
     </AppStack.Navigator>
   );
