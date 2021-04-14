@@ -1,21 +1,23 @@
-import React, { useEffect, useRef, useCallback } from "react";
+import React, { useEffect, useRef, useCallback, useState } from "react";
 import { TextInputProps, TextInput } from "react-native";
 import { useField } from "@unform/core";
 
-import { Label, StyledInput, Error } from "./styles";
+import { Container, LabelsWrapper, Label, StyledInput, Error } from "./styles";
 
 interface InputProps extends TextInputProps {
   name: string;
   label?: string;
   onChangeText?: any;
+  required?: boolean;
 }
 
 interface InputReference extends TextInput {
   value: string;
 }
 
-const Input = ({ name, label, onChangeText, ...rest }: InputProps) => {
+const Input = ({ name, label, onChangeText, required,  ...rest }: InputProps) => {
   const inputRef = useRef<InputReference>(null);
+  const [isFocused, setIsFocused] = useState(false);
 
   const { fieldName, registerField, defaultValue = "", error } = useField(name);
 
@@ -55,16 +57,25 @@ const Input = ({ name, label, onChangeText, ...rest }: InputProps) => {
   );
 
   return (
-    <>
-      {label && <Label>{label}</Label>}
+    <Container>
+      <LabelsWrapper>
+        {label && <Label>{label}</Label>}
+        {!required && <Label>(Opcional)</Label>}
+      </LabelsWrapper>
 
       <StyledInput
         ref={inputRef}
         onChangeText={handleChangeText}
         defaultValue={defaultValue}
+        focus={isFocused}
+        onFocus={() => setIsFocused(true)}
+        onBlur={() => setIsFocused(false)}
+        error={error}
         {...rest}
       />
-    </>
+
+      {error && <Error>{error}</Error>}
+    </Container>
   );
 };
 

@@ -1,9 +1,8 @@
 import React, { useRef } from "react";
 import { SubmitHandler, FormHandles } from "@unform/core";
-import { useNavigation } from "@react-navigation/native";
 import * as Yup from "yup";
 
-import ProcessInterface from "../../../interfaces/ProcessInterface";
+import AcionamentoInterface from "../../../interfaces/AcionamentoInterface";
 
 import Form from "../../../components/Form";
 import Input from "../../../components/Input";
@@ -11,12 +10,11 @@ import ConfirmButton from "../../../components/ConfirmButton";
 
 import { Container } from "./styles";
 
-const Process: React.FC = () => {
+const Acionamento: React.FC = () => {
   const formRef = useRef<FormHandles>();
-  const navigation = useNavigation();
 
-  const handleSubmit: SubmitHandler<ProcessInterface> = async (
-    data: ProcessInterface
+  const handleSubmit: SubmitHandler<AcionamentoInterface> = async (
+    data: AcionamentoInterface
   ) => {
     try {
       const schema = Yup.object().shape({
@@ -33,7 +31,6 @@ const Process: React.FC = () => {
 
       // Validation passed
       console.log(data);
-      navigation.navigate("Acionamento");
     } catch (err) {
       const validationErrors = {};
 
@@ -49,11 +46,11 @@ const Process: React.FC = () => {
   return (
     <Container>
       <Form onSubmit={handleSubmit} formRef={formRef}>
-        <Input name="area" required label="Area" />
-        <Input name="sector" required label="Setor" />
-        <Input name="group" required label="Conjunto" />
-        <Input name="equipment" required label="Equipamento" />
-        <Input name="tag" label="Tag" />
+        <Input name="description" required label="Descrição" />
+        <Input name="motorInducao" required label="Motor Indução" />
+        <Input name="motorSincrono" required label="Motor Síncrono" />
+        <Input name="geradorEnergia" required label="Gerador de Energia" />
+        <Input name="servoMotor" label="ServoMotor" />
         <ConfirmButton
           label="Próximo"
           title="SubmitForm"
@@ -64,4 +61,4 @@ const Process: React.FC = () => {
   );
 };
 
-export default Process;
+export default Acionamento;
