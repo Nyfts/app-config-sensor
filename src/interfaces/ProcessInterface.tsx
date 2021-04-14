@@ -1,7 +1,7 @@
 export default interface ProcessInterface {
   area: string;
   sector: string;
-  conjunto: string;
+  group: string;
   equipment: string;
   tag: string;
 }

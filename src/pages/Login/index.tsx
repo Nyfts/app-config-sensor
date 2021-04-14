@@ -8,7 +8,7 @@ import { useAuth } from "../../contexts/auth";
 import { useLoading } from "../../contexts/loading";
 
 import Form from "../../components/Form";
-import Input from "../../components/Input";
+import LoginInput from "../../components/LoginInput";
 
 import {
   Container,
@@ -57,8 +57,8 @@ const Login: React.FC = () => {
           <Text>Entre com suas credenciais</Text>
           <FormContainer>
             <Form formRef={formRef} onSubmit={handleSubmit}>
-              <Input name="username" placeholder="Usuário" />
-              <Input name="password" placeholder="Senha" />
+              <LoginInput name="username" placeholder="Usuário" />
+              <LoginInput name="password" placeholder="Senha" />
               <NativeFeedback
                 background={TouchableNativeFeedback.Ripple("#fff", false)}
                 onPress={() => formRef.current.submitForm()}
